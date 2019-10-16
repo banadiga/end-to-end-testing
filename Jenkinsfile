@@ -45,23 +45,30 @@ pipeline {
             sh "npm run test:g2"
           }
         }
+      }
+    }
 
-        parallel {
-          stage('tester G3 m1') {
-            steps {
-              echo "Running build ${env.BUILD_ID}"
-              sh "npm run test:g3"
-            }
+    stage('cypress parallel group tests') {
+      environment {
+        CYPRESS_RECORD_KEY = credentials('cypress-example-kitchensink-record-key')
+        CYPRESS_trashAssetsBeforeRuns = 'false'
+      }
+
+      parallel {
+        stage('tester G3') {
+          steps {
+            echo "Running build ${env.BUILD_ID}"
+            sh "npm run test:g3"
           }
-          stage('tester G3 m2') {
-            steps {
-              echo "Running build ${env.BUILD_ID}"
-              sh "npm run test:g3"
-            }
+        }
+
+        stage('tester G3') {
+          steps {
+            echo "Running build ${env.BUILD_ID}"
+            sh "npm run test:g3"
           }
         }
       }
-
     }
   }
 }
