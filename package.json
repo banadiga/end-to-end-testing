@@ -8,7 +8,10 @@
     "cypress": "^3.4.1"
   },
   "scripts": {
-    "test": "cypress run --record --parallel --key $CYPRESS_RECORD_KEY"
+    "test": "cypress run --record --spec 'cypress/integration/g*/**/*' --key $CYPRESS_RECORD_KEY",
+    "test:g1": "cypress run --record --parallel --group g1 --spec 'cypress/integration/g1/**/*' --key $CYPRESS_RECORD_KEY",
+    "test:g2": "cypress run --record --parallel --group g2 --spec 'cypress/integration/g2/**/*' --key $CYPRESS_RECORD_KEY",
+    "test:g3": "cypress run --record --parallel --group g3 --spec 'cypress/integration/g3/**/*' --key $CYPRESS_RECORD_KEY"
   },
   "author": "",
   "license": "ISC"

@@ -31,32 +31,25 @@ pipeline {
       parallel {
         // start several test jobs in parallel, and they all
         // will use Cypress Dashboard to load balance any found spec files
-        stage('tester A') {
+        stage('tester G1') {
           steps {
             echo "Running build ${env.BUILD_ID}"
-            sh "npm run test"
+            sh "npm run test:g1"
           }
         }
 
         // second tester runs the same command
-        stage('tester B') {
+        stage('tester G2') {
           steps {
             echo "Running build ${env.BUILD_ID}"
-            sh "npm run test"
+            sh "npm run test:g2"
           }
         }
 
-        stage('tester С') {
+        stage('tester G3') {
           steps {
             echo "Running build ${env.BUILD_ID}"
-            sh "npm run test"
-          }
-        }
-
-        stage('tester D') {
-          steps {
-            echo "Running build ${env.BUILD_ID}"
-            sh "npm run test"
+            sh "npm run test:g3"
           }
         }
       }
