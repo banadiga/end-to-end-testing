@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    // this image provides everything needed to run Cypress
-    docker {
-      image 'cypress/base:10'
-    }
-  }
+  agent any
 
   stages {
     // first stage installs node dependencies and Cypress binary
@@ -15,7 +10,6 @@ pipeline {
         // http://localhost:8080/pipeline-syntax/globals#env
         echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
         sh 'npm install'
-        sh 'npm run cy:verify'
       }
     }
 
