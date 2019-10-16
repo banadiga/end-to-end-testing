@@ -46,10 +46,18 @@ pipeline {
           }
         }
 
-        stage('tester G3') {
-          steps {
-            echo "Running build ${env.BUILD_ID}"
-            sh "npm run test:g3"
+        parallel {
+          stage('tester G3 m1') {
+            steps {
+              echo "Running build ${env.BUILD_ID}"
+              sh "npm run test:g3"
+            }
+          }
+          stage('tester G3 m2') {
+            steps {
+              echo "Running build ${env.BUILD_ID}"
+              sh "npm run test:g3"
+            }
           }
         }
       }
