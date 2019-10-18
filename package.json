@@ -9,9 +9,9 @@
   },
   "scripts": {
     "test": "cypress run --record --spec 'cypress/integration/g*/**/*' --key $CYPRESS_RECORD_KEY",
-    "test:g1": "cypress run --record --parallel --group g1 --spec 'cypress/integration/g1/**/*' --key $CYPRESS_RECORD_KEY",
-    "test:g2": "cypress run --record --parallel --group g2 --spec 'cypress/integration/g2/**/*' --key $CYPRESS_RECORD_KEY",
-    "test:g3": "cypress run --record --parallel --group g3 --spec 'cypress/integration/g3/**/*' --key $CYPRESS_RECORD_KEY"
+    "test:g1": "cypress run --record --parallel --group g1 --spec 'cypress/integration/g1/**/*' --ci-build-id $CI_BUILD_ID --key $CYPRESS_RECORD_KEY",
+    "test:g2": "cypress run --record --parallel --group g2 --spec 'cypress/integration/g2/**/*' --ci-build-id $CI_BUILD_ID --key $CYPRESS_RECORD_KEY",
+    "test:g3": "cypress run --record --parallel --group g3 --spec 'cypress/integration/g3/**/*' --ci-build-id $CI_BUILD_ID --key $CYPRESS_RECORD_KEY"
   },
   "author": "",
   "license": "ISC"
